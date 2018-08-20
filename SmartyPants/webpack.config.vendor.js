@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
+
 const treeShakableModules = [
     '@angular/animations',
     '@angular/common',
@@ -19,6 +20,7 @@ const nonTreeShakableModules = [
     'es6-shim',
     'event-source-polyfill',
     'jquery',
+    'normalize.css'
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 
