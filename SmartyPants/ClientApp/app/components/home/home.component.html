@@ -1,30 +1,65 @@
 <div class="home-component">
-    <p class="instructions">Fill out the address form and click Validate!</p>
-    <form name="addressForm" class="form">
-        <div>
-            <label>Address Line 1</label>
-            <input />
+    <div class="form-wrapper">
+        <form #addressForm="ngForm"
+              (ngSubmit)="submit()">
+            <p class="instructions bold">Fill out the address form and click Validate!</p>
+            <div class="grp row">
+                <label class="bold"
+                       for="street">Street</label>
+                <input type="text"
+                       id="street"
+                       name="street"
+                       [(ngModel)]="model.street">
+            </div>
+            <div class="grp row">
+                <label class="bold"
+                       for="city">City</label>
+                <input type="text"
+                       class="small"
+                       id="city"
+                       name="city"
+                       [(ngModel)]="model.city">
+            </div>
+            <div class="grp row">
+                <label class="bold"
+                       for="state">State</label>
+                <input type="text"
+                       class="small"
+                       id="state"
+                       name="state"
+                       [(ngModel)]="model.state">
+            </div>
+            <div class="grp row">
+                <label class="bold"
+                       for="zip">Zip</label>
+                <input type="text"
+                       class="small"
+                       id="zip"
+                       name="zip"
+                       [(ngModel)]="model.zip">
+            </div>
+            <div class="button-wrapper row">
+                <button type="submit" class="btn btn-yellow">Validate!</button>
+                <button type="button" class="btn btn-grey" (click)="reset()">Reset</button>
+            </div>
+        </form>
+    </div>
+    <div class="results-wrapper"
+         *ngIf="submitted">
+        <h2 class="results-header">Validation Results</h2>
+        <p *ngIf="results.length === 0"
+           class="noResults">No results found.</p>
+        <div *ngFor="let result of results">
+            <div class="grp">
+                <label class="bold" 
+                       for="address1">Address 1</label>
+                <span>{{result.delivery_line_1}}</span>
+            </div>
+            <div class="grp">
+                <label class="bold"
+                       for="address2">Address 2</label>
+                <span>{{result.last_line}}</span>
+            </div>
         </div>
-        <div>
-            <label>Address Line 2</label>
-            <input />
-        </div>
-        <div>
-            <label>City</label>
-            <input />
-        </div>
-        <div>
-            <label>State/Province/Region</label>
-            <input />
-        </div>
-        <div>
-            <label>ZIP/Postal Code</label>
-            <input />
-        </div>
-        <div>
-            <label>Country</label>
-            <input />
-        </div>
-    </form>
-    <button>Validate!</button>
+    </div>
 </div>

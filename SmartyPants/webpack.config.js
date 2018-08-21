@@ -25,7 +25,8 @@ module.exports = (env) => {
                     exclude: /node_modules/,
                     loader: 'raw-loader!less-loader'
                 },
-                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
+                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
+                { test: /\.(woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=50000&name=fonts/[name].[ext]'] }
             ]
         },
         plugins: [new CheckerPlugin()]

@@ -1,13 +1,79 @@
-﻿.home-component {
-    height: 100%;
+﻿@form-item-width: 60%;
 
-    > p.instructions {
-        font-size: 150%;
+.frame() {
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 5px 8px 0 rgba(0,0,0,.14), 0 1px 14px 0 rgba(0,0,0,.12);
+    padding: 10px;
+}
+
+.home-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Titillium Web', sans-serif;
+
+    .row {
+        width: @form-item-width;
     }
 
-    .form {
+    .grp {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        flex-direction: row;
+        margin: 10px;
+
+        label {
+            padding: 0 2%;
+            text-align: right;
+            width: 15%;
+
+            + input {
+                width: 80%;
+            }
+
+            + input.small {
+                width: 30%;
+            }
+
+            + span {
+                width: 80%;
+            }
+        }
+    }
+
+    .form-wrapper {
+        .frame();
+        width: 70%;
+        margin: 0 0 5% 0;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            > p.instructions {
+                font-size: 150%;
+            }
+
+            .button-wrapper {
+                margin: 25px 0;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+            }
+        }
+    }
+
+    .results-wrapper {
+        .frame();
+        min-width: 50%;
+
+        .results-header {
+            text-align: center;
+        }
+
+        .noResults {
+            text-align: center;
+        }
     }
 }
